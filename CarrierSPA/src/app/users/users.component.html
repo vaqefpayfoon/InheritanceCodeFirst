@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <input type="text"
+        placeholder="Type to filter the name column..." class="form-control"
+        (keyup)="updateFilter($event)"/>
+  </div>
+  <div>
+    <ngx-datatable
+    #table
+    class="dark"
+    [rows]="wholeUserDatas"
+    [loadingIndicator]="loadingIndicator"
+    [columns]="WholeUsercolumns"
+    [columnMode]="'force'"
+    [headerHeight]="40"
+    [summaryRow]="true"
+    [footerHeight]="40"
+    [limit]="10"
+    [rowHeight]="'auto'"
+    [reorderable]="reorderable">
+  </ngx-datatable>
+  </div>
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+  <!-- <app-auto-complete></app-auto-complete> -->
+  <hr/>
+  <hr/>
+  <hr/>
+  <hr/>
+</div>
+

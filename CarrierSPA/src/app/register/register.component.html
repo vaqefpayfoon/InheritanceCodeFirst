@@ -1,0 +1,243 @@
+  <div class="container">
+    <h2 class="text-center text-primary justify-content-center">Sign Up</h2>
+    <div class="row justify-content-center">
+      <form [formGroup]="signupForm" (submit)="register()" style="width: 100%">
+        <div class="tab-panel">
+          <tabset class="member-tabset" #memberTabs>
+            <tab heading="About">
+              <h4>Description</h4>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <select formControlName="userType" class="form-control">
+                      <option *ngFor="let item of userTypeArr" [ngValue]="item.id" [selected]="0" class="form-control">
+                        {{ item.name }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input [ngClass]="{'is-invalid': signupForm.get('username').errors &&
+                            signupForm.get('username').touched }" type="text" class="form-control"
+                      formControlName="username" placeholder="Username">
+                    <div class="invalid-feedback" *ngIf="signupForm.get('username').hasError('required')
+                                && signupForm.get('username').touched">
+                      Username is required
+                    </div>
+                    <!-- || signupForm.get('username').touched && signupForm.hasError('nameIsForbidden')
+                              <div class="invalid-feedback" *ngIf="signupForm.get('username').errors['nameIsForbidden']">
+                                You can't Use this name
+                            </div> -->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="password" [ngClass]="{'is-invalid': signupForm.get('password').errors &&
+                              signupForm.get('password').touched}" class="form-control" formControlName="password"
+                      placeholder="Password">
+                    <div class="invalid-feedback" *ngIf="signupForm.get('password').hasError('required')
+                                    && signupForm.get('password').touched">
+                      Password is required
+                    </div>
+                    <div class="invalid-feedback" *ngIf="signupForm.get('password').hasError('minlength')
+                                  && signupForm.get('password').touched">
+                      Password must be at least 4 characters
+                    </div>
+                    <div class="invalid-feedback" *ngIf="signupForm.get('password').hasError('maxlength')
+                                && signupForm.get('password').touched">
+                      Password cannot exceed 8 characters
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input [ngClass]="{'is-invalid': signupForm.get('confirmPassword').errors
+                                  && signupForm.get('confirmPassword').touched || signupForm.get('confirmPassword').touched
+                                   && signupForm.hasError('mismatch')}" type="password" class="form-control"
+                      formControlName="confirmPassword" placeholder="Confirm Password">
+                    <div class="invalid-feedback" *ngIf="signupForm.get('confirmPassword').hasError('required')
+                                  && signupForm.get('confirmPassword').touched">
+                      Confirm Password is required
+                    </div>
+                    <div class="invalid-feedback"
+                      *ngIf="signupForm.hasError('mismatch') && signupForm.get('confirmPassword').touched">
+                      Passwords must match
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input [ngClass]="{'is-invalid': signupForm.get('fullName').errors
+                                    && signupForm.get('fullName').touched}" type="text" class="form-control"
+                      formControlName="fullName" placeholder="FullName">
+                    <div class="invalid-feedback" *ngIf="signupForm.get('fullName').hasError('required')
+                                    && signupForm.get('fullName').touched">
+                      FullName is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" formControlName="website" placeholder="Website">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input [ngClass]="{'is-invalid': signupForm.get('age').errors
+                                      && signupForm.get('age').touched}" type="text" class="form-control"
+                      formControlName="age" placeholder="Age">
+                    <div class="invalid-feedback" *ngIf="signupForm.get('age').hasError('required')
+                                      && signupForm.get('age').touched">
+                      Age is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input [ngClass]="{'is-invalid': signupForm.get('lastActive').errors &&
+                                  signupForm.get('lastActive').touched}" class="form-control"
+                      placeholder="Date of Birth" formControlName="lastActive" type="text" bsDatepicker
+                      [bsConfig]="bsConfig">
+                    <div class="invalid-feedback" *ngIf="signupForm.get('lastActive').touched &&
+                                  signupForm.get('lastActive').hasError('required')">Date of Birth is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input [ngClass]="{'is-invalid': signupForm.get('cv').errors
+                                        && signupForm.get('cv').touched}" type="text" class="form-control"
+                      formControlName="cv" placeholder="CV">
+                    <div class="invalid-feedback" *ngIf="signupForm.get('cv').hasError('required')
+                                        && signupForm.get('cv').touched">
+                      CV is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" formControlName="moreInfo" placeholder="moreInfo">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" formControlName="section" placeholder="section">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <!-- <select formControlName="cityId" class="form-control">
+                                        <option *ngFor="let item of cities" [ngValue]="item.id" class="form-control">{{ item.cityName }}</option>
+                                      </select> -->
+                    <ng2-completer [datasource]="dataService" #searchStr inputClass="form-control"
+                      formControlName="cityId" inputName="searchField" [minSearchLength]="1" (blur)="leaveCityBox()">
+                    </ng2-completer>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input [ngClass]="{'is-invalid': signupForm.get('email').errors
+                                            && signupForm.get('email').touched}" type="text" class="form-control"
+                      formControlName="email" placeholder="Email">
+                    <div class="invalid-feedback" *ngIf="signupForm.get('email').hasError('required')
+                                            && signupForm.get('email').touched">
+                      Email is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input [ngClass]="{'is-invalid': signupForm.get('phone').errors
+                                            && signupForm.get('phone').touched}" type="text" class="form-control"
+                      formControlName="phone" placeholder="Phone">
+                    <div class="invalid-feedback" *ngIf="signupForm.get('phone').hasError('required')
+                                            && signupForm.get('phone').touched">
+                      Phone is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select formControlName="gender" class="form-control">
+                      <option *ngFor="let item of genders" [ngValue]="item" class="form-control">{{ item }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select formControlName="carrierId" class="form-control">
+                      <option *ngFor="let item of carriers" [ngValue]="item.id" class="form-control">
+                        {{ item.carrierTitle }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select formControlName="salaryId" class="form-control">
+                      <option *ngFor="let item of salaries" [ngValue]="item.id" class="form-control">
+                        {{ item.fromSalary }} - {{ item.toSalary }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select formControlName="universityId" class="form-control">
+                      <option *ngFor="let item of universities" [ngValue]="item.id" class="form-control">
+                        {{ item.universityName }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" formControlName="universityInfo"
+                      placeholder="UniversityInfo">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="form-group text-center">
+                          <button class="btn btn-success ml-2" [disabled]="!signupForm.valid" type="submit">Register</button>
+                          <button class="btn btn-info ml-2" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </tab>
+            <tab heading="Photos">
+              <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery> -->
+              <app-photo-manage [userId]='userId'></app-photo-manage>
+            </tab>
+          </tabset>
+        </div>
+
+        <p>{{signupForm.valid}}</p>
+        <p>{{signupForm.errors}}</p>
+
+
+        <ng-container *ngIf="signupForm.get('userType').value === 1; else elseTemplate">
+          <p>Employee</p>
+
+        </ng-container>
+        <ng-template #elseTemplate>
+          <p>Employer</p>
+        </ng-template>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,9 @@
+C:\StartUp\CarrierDomain\bin\Debug\netstandard2.0\CarrierDomain.deps.json
+C:\StartUp\CarrierDomain\bin\Debug\netstandard2.0\CarrierDomain.dll
+C:\StartUp\CarrierDomain\bin\Debug\netstandard2.0\CarrierDomain.pdb
+C:\StartUp\CarrierDomain\obj\Debug\netstandard2.0\CarrierDomain.csprojAssemblyReference.cache
+C:\StartUp\CarrierDomain\obj\Debug\netstandard2.0\CarrierDomain.csproj.CoreCompileInputs.cache
+C:\StartUp\CarrierDomain\obj\Debug\netstandard2.0\CarrierDomain.AssemblyInfoInputs.cache
+C:\StartUp\CarrierDomain\obj\Debug\netstandard2.0\CarrierDomain.AssemblyInfo.cs
+C:\StartUp\CarrierDomain\obj\Debug\netstandard2.0\CarrierDomain.dll
+C:\StartUp\CarrierDomain\obj\Debug\netstandard2.0\CarrierDomain.pdb

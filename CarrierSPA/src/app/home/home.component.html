@@ -1,0 +1,22 @@
+<div class="container">
+    <!-- <div *ngIf="!registerMode" style="text-align: center">
+
+    </div>     -->
+    <ng-container *ngIf="!registerMode; then thenTemplate; else elseTemplate"></ng-container>
+    <ng-template #thenTemplate>
+        <h1>Find your dreem job</h1>
+        <p class="lead">Come on in to view your matches... All you need to do is sign up!</p>
+        <div class="text-center">
+          <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Register</button>
+          <button class="btn btn-info btn-lg">Learn more</button>
+        </div>
+    </ng-template>
+    <ng-template #elseTemplate>
+        <!-- <div class="row">
+            <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+          </div> -->
+    </ng-template>
+    <!-- <div *ngIf="registerMode" class="container">
+
+    </div> -->
+  </div>
